@@ -7,7 +7,7 @@ module.exports = (sequelize, Sequelize) => {
         type: Sequelize.STRING
       },
       secure_password: {
-        type: Sequelize.BOOLEAN
+        type: Sequelize.STRING
       }
     });
   
