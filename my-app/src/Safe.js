@@ -16,6 +16,8 @@ import {
 import './App.css'
 import * as R from 'ramda'
 import Accounts from './Accounts'
+import Network from './Network.js'
+import GetHelp from './GetHelp.js'
 
 const Safe = ({ setPageKey, ...props }) => {
  // useEffect(() => setPageKey('safe'))
@@ -65,11 +67,11 @@ const Safe = ({ setPageKey, ...props }) => {
       </Segment>
       <>
         {activeItem =='support'? 
-        <Header content = "support" />
+        <Network/>
         : activeItem =='accounts'? 
         <Accounts />
         : activeItem =='help'? 
-        <Header content = "help" />
+        <GetHelp />
         : null}
       </>
     </>
