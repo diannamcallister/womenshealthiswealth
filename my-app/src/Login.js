@@ -22,8 +22,7 @@ const Login = ({ setPageKey, ...props }) => {
     function createUser() {
       const user = {
         username: "hello",
-        password: "Testing",
-        secure_password: "testING"
+        password: "Testing"
       };
       
       axios.post('http://localhost:8010/api/users/', user)
