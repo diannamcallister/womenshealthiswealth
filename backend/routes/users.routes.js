@@ -15,11 +15,6 @@ module.exports = app => {
     // Update a User by id
     router.put("/:id", users.update);
   
-    // Delete a User by id
-    router.delete("/:id", users.delete);
-  
-    // Delete all users
-    router.delete("/", users.deleteAll);
-  
+    // beginning of the endpoint
     app.use('/api/users', router);
   };
