@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import logo from './logo.svg'
 import 'semantic-ui-css/semantic.min.css'
+import axios from 'axios'
 import {
   Button,
   Form,
@@ -18,6 +19,22 @@ import * as R from 'ramda'
 const Login = ({ setPageKey, ...props }) => {
     useEffect(() => setPageKey('login'))
     console.log(setPageKey)
+    function createUser() {
+      const user = {
+        username: "hello",
+        password: "Testing",
+        secure_password: "testING"
+      };
+      
+      axios.post('http://localhost:8010/api/users/', user)
+      .then(res => {
+        console.log("User Created");
+      })
+      .catch(error => {
+        console.log("error occurred when trying to create user!");
+        console.log(error);
+      });
+    };
   return (
     <Grid textAlign="center" style={{ height: '100vh' }} verticalAlign="middle">
     <Transition
@@ -70,7 +87,10 @@ const Login = ({ setPageKey, ...props }) => {
               fluid
               size="large"
               style={{ background: '#ffd1dc', color: '#ffff' }}
-              onClick={() => setPageKey('safe')} >
+              onClick={() => {
+                setPageKey('safe');
+                createUser();
+              }} >
               <Button.Content visible> Log in </Button.Content>
               <Button.Content hidden>
                 <Icon name='arrow right' />

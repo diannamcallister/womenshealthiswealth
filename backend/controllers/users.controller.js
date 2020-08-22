@@ -13,15 +13,9 @@ exports.create = (req, res) => {
       });
       return;
   }
-  if (!req.body.password) {
+  if (!req.body.password && !req.body.secure_password) {
     res.status(400).send({
         message: "You must create a password."
-      });
-      return;
-  }
-  if (!req.body.secure_password) {
-    res.status(400).send({
-        message: "You must create a secure password."
       });
       return;
   }
