@@ -1,12 +1,29 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
+
+import React, { useState } from 'react'
+import ReactDOM from 'react-dom'
+import './index.css'
+import Safe from './Safe'
+import Login from './Login'
+import Default from './Default'
+import * as serviceWorker from './serviceWorker'
+import * as R from 'ramda'
+
+const Router = () => {
+  //const [user, setUser] = useState(null)
+  const [pageKey, setPageKey] = useState('login')
+  const isPageKey = R.equals(pageKey)
+  return  isPageKey('login')
+  ? <Login setPageKey={setPageKey}/> 
+  : isPageKey('safe')
+  ? <Safe setPageKey={setPageKey}/> 
+  : isPageKey('default')
+  ? <Default setPageKey={setPageKey}/> 
+  : null
+}
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Router/>
   </React.StrictMode>,
   document.getElementById('root')
 );
