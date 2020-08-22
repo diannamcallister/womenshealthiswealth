@@ -19,18 +19,11 @@ exports.create = (req, res) => {
       });
       return;
   }
-  if (!req.body.secure_password) {
-    res.status(400).send({
-        message: "You must create a secure password."
-      });
-      return;
-  }
 
   // Create the User
   const user = {
       username: req.body.username,
-      password: req.body.password,
-      secure_password: req.body.secure_password
+      password: req.body.password
   }  
 
   // Save the user to the db
