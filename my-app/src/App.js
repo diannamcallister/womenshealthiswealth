@@ -9,6 +9,7 @@ import {
   Transition,
   Icon,
   Message,
+  Container,
   Segment
 } from 'semantic-ui-react'
 import './App.css'
@@ -24,16 +25,18 @@ function App() {
       transitionOnMount={true}
     >
       <Grid.Column style={{ maxWidth: 450 }}>
+        <Segment raised color="white">
         <Header style={{ color: '#ffd1dc' }} as="h1" textAlign="center">
           <Icon name="woman" /> Log in to access Women's Health is Wealth!
         </Header>
+        </Segment>
         <Form
           onSubmit={(values, data) => {
            // handleSubmit(values, data) && setPageKey('main')
           }}
           size="large"
         >
-          <Segment attached="top">
+          <Segment raised attached="top">
             <Form.Input
               // type="text"
               // onChange={handleChange}
@@ -72,7 +75,7 @@ function App() {
             </Button>
           </Segment>
         </Form>
-        <Segment attached="bottom">
+        <Segment raised attached="bottom">
           <Button
             fluid
             basic
