@@ -38,21 +38,16 @@ const Login = ({ setPageKey, ...props }) => {
         var secureLogin = false;
         var defaultLogin = false;
         if (res.data.message.includes("secure")) {
-          console.log("in here");
           // the user entered their secure password, so it is safe to display the secure page
           secureLogin = true;
           defaultLogin = false;
         } else if (res.data.message.includes("general")){
-          console.log("in here2");
           secureLogin = false;
           defaultLogin = true;
         } else {
-          console.log("in here3");
-          secureLogin = true;
-          defaultLogin = true;
+          secureLogin = false;
+          defaultLogin = false;
         }
-        console.log(secureLogin);
-        console.log(defaultLogin);
           secureLogin?
            setPageKey('safe') : 
            defaultLogin? setPageKey('default') : setPageKey('login')
