@@ -9,17 +9,15 @@ module.exports = app => {
     // Retrieve a single User by id
     router.get("/:id", users.findOne);
 
+    // Check a User signing in
+    router.get("/:username/:password", users.checkLogin)
+
     // Create a new User
     router.post("/", users.create);
   
     // Update a User by id
     router.put("/:id", users.update);
   
-    // Delete a User by id
-    router.delete("/:id", users.delete);
-  
-    // Delete all users
-    router.delete("/", users.deleteAll);
-  
+    // beginning of the endpoint
     app.use('/api/users', router);
   };
