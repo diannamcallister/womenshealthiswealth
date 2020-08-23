@@ -31,15 +31,29 @@ const Login = ({ setPageKey, ...props }) => {
        //so if the username and password match a user & its the secure pass set
        //secureLogin = true and defaultLogin= false
        //else if they didn't enter the secure pass set secureLogin = false and defaultLogin= true
-
-        console.log(values) 
-        const secureLogin=true
-        const defaultLogin = false
-        setTimeout(() => {
+      
+      axios.get('http://localhost:8010/api/users/${values.username}/${values.password}')
+      .then(res => {
+        console.log("User Logged In");
+        if (res.message.includes("secure")) {
+          // the user entered their secure password, so it is safe to display the secure page
+          const secureLogin = true;
+          const defaultLogin = false;
+        } else if (res.message.includes("general")){
+          const secureLogin = false;
+          const defaultLogin = true;
+        } else {
+          const secureLogin = false;
+          const defaultLogin = false;
+        }
           secureLogin?
            setPageKey('safe') : 
            defaultLogin? setPageKey('default') : setPageKey('login')
-        }, 400)
+      })
+      .catch(error => {
+        console.log("Error occurred when trying to log in!");
+        console.log(error);
+      });
       },
     });
     

@@ -23,21 +23,6 @@ console.log(setPageKey)
 const [check, updateCheck] = useState(false)
 const [email, setEmail] = useState('')
 const [securePassword, setSecurePassword] = useState('')
-function createUser() {
-    const user = {
-      username: "hello",
-      password: "Testing"
-    };
-    
-    axios.post('http://localhost:8010/api/users/', user)
-    .then(res => {
-      console.log("User Created");
-    })
-    .catch(error => {
-      console.log("error occurred when trying to create user!");
-      console.log(error);
-    });
-  };
   const formik = useFormik({
     initialValues: {
       username: '',
@@ -55,12 +40,30 @@ function createUser() {
      //the variable 'check' means they opted in for a securePassword so itll automatically
      //route to the safe route
 
-      console.log(values) 
-      console.log(check)
-      setTimeout(() => {
-        check?
+     const user = {
+      username: values.username,
+      password: values.password,
+      secure_password: values.secure_password
+    };
+    
+    axios.post('http://localhost:8010/api/users/', user)
+    .then(res => {
+      console.log("User Created");
+      if (user.secure_password) {
+        // the user entered their secure password, so it is safe to display the secure page
+        const secureLogin=true;
+        const defaultLogin = false;
+      } else {
+        const secureLogin=false;
+        const defaultLogin = false;
+      }
+      check?
          setPageKey('safe') : setPageKey('default')
-      }, 400)
+    })
+    .catch(error => {
+      console.log("Error occurred when trying to create user!");
+      console.log(error);
+    });
     },
   });
   return (

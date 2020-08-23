@@ -64,7 +64,7 @@ const DefaultRecipes = ({ ...props }) => {
                 </Item>
             </Item.Group>
 
-            <Button circular icon='pencil alternate' />
+            <Button color='purple' circular icon='pencil alternate' />
         </Segment>
     )
     

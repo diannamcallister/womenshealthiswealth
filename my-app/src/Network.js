@@ -26,16 +26,29 @@ const Network = ({ ...props }) => {
     return (
     <Segment color='white' size='big'>
         <Feed>
-            <Feed.Event
-            image={Img1}
-            date={'5 days ago'}
-            summary={'laura1983 created a post'}
-            extraText={"My husband used to give me $1500 a month but has recently started giving me $1000. I'm afraid he's gambling again. What should I do?"}
-            />
+            
             <Feed.Event>
+            <Feed.Label image={Img1} />
+            <Feed.Content date={'5 days ago'} 
+            summary={'laura1983 created a post'} 
+            extraText={"My husband used to give me $1500 a month but has recently started giving me $1000. What should I do?"} /> 
+            <Feed.Meta>
+            <Feed.Like>
+                <Icon name='like' color='red' />271 Likes
+            </Feed.Like>
+            </Feed.Meta>        
+            </Feed.Event>
 
+            <Feed.Event>
             <Feed.Label image={Img2} />
-            <Feed.Content date={'3 days ago'} summary={'jennyxoxo created a post'} extraText={"People say that I should just leave him. If only it were that simple."} />
+            <Feed.Content date={'3 days ago'} 
+            summary={'jennyxoxo created a post'} 
+            extraText={"People say that I should just leave him. If only it were that simple. He threatened me."} /> 
+            <Feed.Meta>
+            <Feed.Like>
+                <Icon name='like' color='red' />144 Likes
+            </Feed.Like>
+            </Feed.Meta>        
             </Feed.Event>
 
             <Feed.Event>
@@ -45,9 +58,15 @@ const Network = ({ ...props }) => {
                 <Feed.Summary content={'kate_sl created a post'} />
                 <Feed.Extra text content={"How can I secure some funds for myself without my husband knowing?"} />
             </Feed.Content>
+            <Feed.Meta>
+            <Feed.Like>
+                <Icon name='like' color='red' />79 Likes
+            </Feed.Like>
+            </Feed.Meta>
             </Feed.Event>
 
-            <Button circular icon='pencil alternate' />
+            <Button color='purple' circular icon='pencil alternate' />
+
         </Feed>
     </Segment>
 
