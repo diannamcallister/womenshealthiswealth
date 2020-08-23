@@ -30,6 +30,10 @@ exports.create = (req, res) => {
       user.secure_password = req.body.secure_password;
   }
 
+  if (req.body.email) {
+    user.email = req.body.email;
+  }
+
   // Save the user to the db
   Users.create(user)
     .then(data => {
