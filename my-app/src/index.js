@@ -7,6 +7,7 @@ import Login from './Login'
 import Default from './Default'
 import * as serviceWorker from './serviceWorker'
 import * as R from 'ramda'
+import Register from './Register'
 
 const Router = () => {
   //const [user, setUser] = useState(null)
@@ -18,6 +19,8 @@ const Router = () => {
   ? <Safe setPageKey={setPageKey}/> 
   : isPageKey('default')
   ? <Default setPageKey={setPageKey}/> 
+  : isPageKey('register')
+  ? <Register setPageKey={setPageKey}/> 
   : null
 }
 
