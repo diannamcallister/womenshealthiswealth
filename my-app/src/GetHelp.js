@@ -35,10 +35,15 @@ const GetHelp = ({props }) => {
 
 
 
-            <List ordered celled>
+            <List ordered divided verticalAlign='middle' floated='middle'>
             <List.Header as='a'>Other ways to get help:</List.Header>
                 <List.Item>https://www.sheltersafe.ca/ : Find a safe shelter in your province</List.Item>
                 <List.Item>http://54.186.211.6/shelters/ : Shelters for Aboriginals</List.Item>
+                <List.Item>https://canadianwomen.org/support-services/: Services for Canadian Women</List.Item>
+                <List.Item>The National Residential School Crisis Line: 1 866 925 4419</List.Item>
+                <List.Item>Kids Help Phone: 1 800 668 6868</List.Item>
+                <List.Item>https://www.ontario.ca/page/get-help-if-you-are-experiencing-violence#section-0: Ontario Crisis Lines</List.Item>
+                <List.Item>https://settlement.org/ontario/health/family-health/domestic-abuse/what-is-domestic-abuse/: What is Domestic abuse?</List.Item>
                 <List.Item>The National Residential School Crisis Line: 1 866 925 4419</List.Item>
                 <List.Item>Kids Help Phone: 1 800 668 6868</List.Item>
             </List>

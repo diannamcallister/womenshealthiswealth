@@ -125,7 +125,7 @@ const [securePassword, setSecurePassword] = useState('')
               icon="mail"
               iconPosition="left"
               placeholder="ENTER YOUR EMAIL"
-              type="password"
+              type="text"
               onChange={formik.handleChange}
               value={formik.values.email}
             /> 
