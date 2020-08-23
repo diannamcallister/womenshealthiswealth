@@ -43,7 +43,7 @@ const [securePassword, setSecurePassword] = useState('')
      const user = {
       username: values.username,
       password: values.password,
-      secure_password: values.secure_password
+      secure_password: values.securePassword
     };
     
     axios.post('http://localhost:8010/api/users/', user)

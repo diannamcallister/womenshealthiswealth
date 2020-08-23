@@ -32,20 +32,27 @@ const Login = ({ setPageKey, ...props }) => {
        //secureLogin = true and defaultLogin= false
        //else if they didn't enter the secure pass set secureLogin = false and defaultLogin= true
       
-      axios.get('http://localhost:8010/api/users/${values.username}/${values.password}')
+      axios.get(`http://localhost:8010/api/users/${values.username}/${values.password}`)
       .then(res => {
         console.log("User Logged In");
-        if (res.message.includes("secure")) {
+        var secureLogin = false;
+        var defaultLogin = false;
+        if (res.data.message.includes("secure")) {
+          console.log("in here");
           // the user entered their secure password, so it is safe to display the secure page
-          const secureLogin = true;
-          const defaultLogin = false;
-        } else if (res.message.includes("general")){
-          const secureLogin = false;
-          const defaultLogin = true;
+          secureLogin = true;
+          defaultLogin = false;
+        } else if (res.data.message.includes("general")){
+          console.log("in here2");
+          secureLogin = false;
+          defaultLogin = true;
         } else {
-          const secureLogin = false;
-          const defaultLogin = false;
+          console.log("in here3");
+          secureLogin = true;
+          defaultLogin = true;
         }
+        console.log(secureLogin);
+        console.log(defaultLogin);
           secureLogin?
            setPageKey('safe') : 
            defaultLogin? setPageKey('default') : setPageKey('login')

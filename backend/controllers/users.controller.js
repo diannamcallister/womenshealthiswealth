@@ -24,7 +24,11 @@ exports.create = (req, res) => {
   const user = {
       username: req.body.username,
       password: req.body.password
-  }  
+  } 
+  
+  if (req.body.secure_password) {
+      user.secure_password = req.body.secure_password;
+  }
 
   // Save the user to the db
   Users.create(user)
@@ -77,32 +81,6 @@ exports.checkLogin = (req, res) => {
 
     var username = req.params.username;
     var unknown_password = req.params.password;
-
-    // // select * from users where username='useasdfdsaf'
-    // var sql = 'SELECT * FROM users WHERE users.username = ${users.params.username}';
-    // var query = db.query(sql, (error, result) => {
-    //     if (error) {
-    //         // the user is not in the database
-    //         res.status(400).send({
-    //             message: "User does not exist"
-    //         });
-    //     }  else if (result.password === unknown_password) {
-    //         // user is trying to sign into general page
-    //         res.send({
-    //             message: "User is accessing the general page"
-    //         });
-    //     } else if (result.secure_password === unknown_password) {
-    //         // user is trying to sign into secure page
-    //         res.send({
-    //             message: "User is accessing the secure page"
-    //         });
-    //     } else {
-    //         // the user is in the database, but is entering the incorrect password
-    //         res.status(400).send({
-    //             message: "User is giving an incorrect password"
-    //         });
-    //     }
-    // });
 
     Users.findAll({ where : {username : username}})
     .then(data => {
@@ -162,7 +140,6 @@ exports.update = (req, res) => {
             return;
         }
         
-        //TODO: check if .then() can be entered even if secure password was not updated
         Users.update(req.body, {where: {id: id}})
         .then(() => {
             res.send({
