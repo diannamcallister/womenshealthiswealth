@@ -71,6 +71,68 @@ exports.findOne = (req, res) => {
     })
 };
 
+// Check that a user is signing in with the correct login credentials
+exports.checkLogin = (req, res) => {
+    console.log("checking login information");
+
+    var username = req.params.username;
+    var unknown_password = req.params.password;
+
+    // // select * from users where username='useasdfdsaf'
+    // var sql = 'SELECT * FROM users WHERE users.username = ${users.params.username}';
+    // var query = db.query(sql, (error, result) => {
+    //     if (error) {
+    //         // the user is not in the database
+    //         res.status(400).send({
+    //             message: "User does not exist"
+    //         });
+    //     }  else if (result.password === unknown_password) {
+    //         // user is trying to sign into general page
+    //         res.send({
+    //             message: "User is accessing the general page"
+    //         });
+    //     } else if (result.secure_password === unknown_password) {
+    //         // user is trying to sign into secure page
+    //         res.send({
+    //             message: "User is accessing the secure page"
+    //         });
+    //     } else {
+    //         // the user is in the database, but is entering the incorrect password
+    //         res.status(400).send({
+    //             message: "User is giving an incorrect password"
+    //         });
+    //     }
+    // });
+
+    Users.findAll({ where : {username : username}})
+    .then(data => {
+        if (data[0].dataValues.password === unknown_password) {
+            // user is trying to sign into general page
+            res.send({
+                message: "User is accessing the general page"
+            });
+        }
+        else if (data[0].dataValues.secure_password === unknown_password) {
+            // user is trying to sign into secure page
+            res.send({
+                message: "User is accessing the secure page"
+            });
+        } else {
+            // the user is in the database, but is entering the incorrect password
+            res.status(400).send({
+                message: "User is giving an incorrect password"
+            });
+        }
+    })
+    .catch(error => {
+        res.status(500).send({
+            message:
+            error.message || "Some error occurred while getting all Users."
+        });
+    });
+    
+}
+
 // Update a User's secure password
 exports.update = (req, res) => {
     console.log("in update");

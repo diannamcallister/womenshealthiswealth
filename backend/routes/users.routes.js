@@ -9,6 +9,9 @@ module.exports = app => {
     // Retrieve a single User by id
     router.get("/:id", users.findOne);
 
+    // Check a User signing in
+    router.get("/:username/:password", users.checkLogin)
+
     // Create a new User
     router.post("/", users.create);
   
