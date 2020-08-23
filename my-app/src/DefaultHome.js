@@ -44,7 +44,7 @@ const DefaultHome = ({ ...props }) => {
                     <Item.Description>
                     <Image src={require('./short-paragraph.png')}  />
                     </Item.Description>
-                    <Item.Extra>Additional Details</Item.Extra>
+                    <Item.Extra>https://www.plannedparenthood.org/learn/health-and-wellness/menstruation</Item.Extra>
                 </Item.Content>
                 </Item>
 
@@ -72,7 +72,7 @@ const DefaultHome = ({ ...props }) => {
                 </Item>
             </Item.Group>
 
-            <Button circular icon='pencil alternate' />
+            <Button color='purple' circular icon='pencil alternate' />
         </Segment>
     )
     

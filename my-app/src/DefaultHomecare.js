@@ -62,7 +62,7 @@ While vacuuming on a regular basis will keep your carpet from looking dingy and 
                 </Item>
             </Item.Group>
 
-            <Button circular icon='pencil alternate' />
+            <Button color='purple' circular icon='pencil alternate' />
         </Segment>
     )
     
